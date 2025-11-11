@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Certificate | Aiking Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- PDF Libraries (Only needed on this page) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+    <div class="dashboard-layout">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <span class="logo-text">Certify</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link">Dashboard</a></li>
+                <li><a href="create.html" class="nav-link">Create Certificate</a></li>
+                <li><a href="about.html" class="nav-link">About Project</a></li>
+            </ul>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- PAGE 2: Create Certificate -->
+            <section id="create-page" class="page">
+                <header class="page-header">
+                    <h1>Create New Certificate</h1>
+                </header>
+                
+                <div class="create-layout">
+                    <!-- Form Inputs -->
+                    <div class="form-section card">
+                        <h3>1. Enter Details</h3>
+                        <form id="cert-form">
+                            <div class="input-group">
+                                <label for="name">Holder's Name (Required)</label>
+                                <input type="text" id="name" required>
+                            </div>
+                            <div class="input-group">
+                                <label for="org">Issuing Organization (Optional)</label>
+                                <input type="text" id="org" placeholder="Default: Aiking Solution">
+                            </div>
+                            <div class="input-group">
+                                <label for="desc">Event / Description (Optional)</label>
+                                <input type="text" id="desc" placeholder="Default: Outstanding Performance">
+                            </div>
+                            <div class="input-group">
+                                <label for="sig">Signature Name (Optional)</label>
+                                <input type="text" id="sig" placeholder="Default: Project Director">
+                            </div>
+                        </form>
+                        
+                        <h3 class="template-title">2. Select Template</h3>
+                        <div id="template-selector" class="template-selector">
+                            <!-- JS will populate this -->
+                        </div>
+
+                        <button id="downloadBtn" class="btn-primary">Download as PDF</button>
+                    </div>
+
+                    <!-- Live Preview -->
+                    <div class="preview-section card">
+                        <h3>Live Preview</h3>
+                        <div id="certificate-preview-wrapper">
+                            <!-- JS will inject the certificate here -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Hidden definitions for all certificate templates -->
+    <div id="template-definitions" style="display: none;">
+        <!-- (All 3 certificate templates go here, just like in the previous file) -->
+        
+
+        <!-- Template 1: Modern Minimal -->
+        <div id="tpl-modern" class="certificate modern">
+            <div class="modern-header">
+                <h1 class="cert-title">CERTIFICATE</h1>
+                <p class="cert-subtitle">of Achievement</p>
+            </div>
+            <div class="modern-body">
+                <p class="cert-issued">Presented By <span data-field="org">[Aiking Solution]</span></p>
+                <p class="cert-name" data-field="name">[Full Name]</p>
+                <p class="cert-desc" data-field="desc">[For Outstanding Performance]</p>
+            </div>
+            <div class="modern-footer">
+                <div class="signature">
+                    <span class="cert-sig-name" data-field="sig">[Signature]</span>
+                    <span class="cert-sig-title" data-field="sig-title">Project Director</span>
+                </div>
+                <div class="signature">
+                    <span class="cert-date" data-field="date">[Date]</span>
+                    <span class="cert-sig-title">Date Issued</span>
+                </div>
+            </div>
+        </div>
+<!-- Template 2: Classic Elegant -->
+<div id="tpl-classic" class="certificate classic">
+  <div class="cert-border-gold">
+    <div class="cert-border-inner">
+      <span class="cert-issued">Aiking Solution</span>
+      <h1 class="cert-title">Certificate of Completion</h1>
+      <p class="cert-subtitle">This certificate is proudly presented to</p>
+      <p class="cert-name" data-field="name">[Full Name]</p>
+      <p class="cert-desc" data-field="desc">[For Outstanding Performance]</p>
+      <div class="cert-footer">
+        <div class="signature">
+          <span class="cert-date" data-field="date">[Date]</span>
+          <span class="cert-line"></span>
+          <span class="cert-sig-title">Date</span>
+        </div>
+        <div class="signature">
+          <span class="cert-sig-name" data-field="sig">[Signature]</span>
+          <span class="cert-line"></span>
+          <span class="cert-sig-title" data-field="sig-title">Project Director</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        <!-- Template 3: Dark Premium -->
+        <div id="tpl-dark" class="certificate dark">
+            <div class="cert-border-gold-dark">
+                <span class="cert-issued" data-field="org">[Aiking Solution]</span>
+                <h1 class="cert-title">CERTIFICATE</h1>
+                <p class="cert-subtitle">OF COMPLETION</p>
+                <p class="cert-name" data-field="name">[Full Name]</p>
+                <p class="cert-desc" data-field="desc">[For Outstanding Performance]</p>
+                <div class="cert-footer">
+                    <div class="signature">
+                        <span class="cert-date" data-field="date">[Date]</span>
+                        <span class="cert-line"></span>
+                        <span class="cert-sig-title">Date</span>
+                    </div>
+                    <div class="signature">
+                        <span class="cert-sig-name" data-field="sig">[Signature]</span>
+                        <span class="cert-line"></span>
+                        <span class="cert-sig-title" data-field="sig-title">Project Director</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <!-- Scripts for this page -->
+    <script src="nav.js"></script>
+    <script src="create_v2.js"></script><!-- Renamed from script.js -->
+</body>
+</html>

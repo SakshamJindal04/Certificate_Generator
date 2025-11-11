@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aiking Certificate Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="dashboard-layout">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <span class="logo-text">Certify</span>
+            </div>
+            <ul class="nav-links">
+                <!-- Links updated to point to .html files -->
+                <li><a href="index.html" class="nav-link">Dashboard</a></li>
+                <li><a href="create.html" class="nav-link">Create Certificate</a></li>
+                <li><a href="about.html" class="nav-link">About Project</a></li>
+            </ul>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- PAGE 1: Dashboard -->
+            <section id="dashboard-page" class="page">
+                <header class="page-header">
+                    <h1>Welcome to your Dashboard</h1>
+                    <p>Manage and create your professional certificates.</p>
+                </header>
+                <div class="card-container">
+                    <div class="info-card">
+                        <h3>Templates Available</h3>
+                        <p class="card-data" id="template-count">3</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>Certificates Created</h3>
+                        <p class="card-data" id="created-count">0</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>Get Started</h3>
+                        <p>Click "Create Certificate" to begin.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <!-- Script for this page -->
+    <script src="nav.js"></script>
+    <!-- Note: We can add a simple script here if needed, but for now, nav.js is all we need -->
+</body>
+</html>
