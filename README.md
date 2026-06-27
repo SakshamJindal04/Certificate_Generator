@@ -1,32 +1,52 @@
-# Certificate Generation System — Internship Task (Aiking Solution)
+<h1 align="center">Certificate Generator</h1>
 
-This project is a dynamic **Certificate Generation System** built using **Next.js** and **Vanilla JS**.  
-It allows users to enter their name and optional details to automatically generate a professional PDF certificate.
+<p align="center">
+  <strong>A Next.js application to easily generate and download custom certificates.</strong>
+</p>
 
----
+<p align="center">
+  <img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white" alt="Next.js" />
+  <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React" />
+</p>
 
-## 🚀 Features
-- Interactive dashboard with navigation
-- Real-time certificate preview
-- Multiple professional templates (Classic, Modern, Dark)
-- PDF download support using html2canvas & jsPDF
-- Customizable fields (Name, Organization, Event, Signature)
-- Responsive, clean, and production-ready design
+## 🚀 Overview
 
----
+This project provides an intuitive interface for generating personalized certificates. Built with Next.js, it leverages server-side rendering for speed and modern React practices for a seamless user experience.
 
-## 🧩 Tech Stack
-- **Next.js 14**
-- **HTML, CSS, JavaScript**
-- **jsPDF + html2canvas**
-- **API Routes (for template fetching & generation logs)**
+### ✨ Features
+- **Dynamic Generation:** Input user details to instantly render certificates.
+- **Fast Performance:** Built on Next.js for rapid load times.
+- **Export Options:** Easily download the generated certificates.
 
----
+## 📂 Project Structure
 
-## 🧭 How to Run
-```bash
-npm install
-npm run dev
-Then open http://localhost:3000￼# Certificate_Generator
-# Certificate_Generator
-# Certificate_Generator
+```
+├── pages/             # Next.js App routing
+├── public/            # Static assets and template images
+└── package.json       # Dependencies and scripts
+```
+
+## 🛠️ Getting Started
+
+To run this project locally:
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/SakshamJindal04/Certificate_Generator.git
+   cd Certificate_Generator
+   ```
+
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+
+3. **Run the development server:**
+   ```bash
+   npm run dev
+   ```
+
+4. Open [http://localhost:3000](http://localhost:3000) to start generating certificates.
+
+## 🤝 Contributing
+Feel free to open issues or pull requests to add new templates or features!
