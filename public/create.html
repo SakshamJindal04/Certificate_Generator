@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Certificate | Aiking Dashboard</title>
+    <title>Create | Certify.</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <!-- PDF Libraries (Only needed on this page) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
@@ -15,57 +14,85 @@
         <!-- Sidebar Navigation -->
         <nav class="sidebar">
             <div class="sidebar-header">
-                <span class="logo-text">Certify</span>
+                <span class="logo-text">Certify<span class="logo-dot">.</span></span>
             </div>
             <ul class="nav-links">
-                <li><a href="index.html" class="nav-link">Dashboard</a></li>
-                <li><a href="create.html" class="nav-link">Create Certificate</a></li>
-                <li><a href="about.html" class="nav-link">About Project</a></li>
+                <li><a href="index.html" class="nav-link">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                    Dashboard</a></li>
+                <li><a href="create.html" class="nav-link">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="12" y1="18" x2="12" y2="12"></line><line x1="9" y1="15" x2="15" y2="15"></line></svg>
+                    Create Certificate</a></li>
+                <li><a href="about.html" class="nav-link">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                    About Project</a></li>
             </ul>
+            <div class="sidebar-footer">
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Dark Mode">
+                    <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                    <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                    <span>Theme</span>
+                </button>
+            </div>
         </nav>
 
         <!-- Main Content Area -->
-        <main class="main-content">
-            <!-- PAGE 2: Create Certificate -->
-            <section id="create-page" class="page">
+        <main class="main-content" data-bg-img="https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=1920&q=80">
+            <div class="blob-bg"></div>
+            <section id="create-page" class="page fade-in-up">
                 <header class="page-header">
-                    <h1>Create New Certificate</h1>
+                    <h1>Create Certificate</h1>
+                    <p class="subtitle">Fill in the details to generate a customized PDF certificate.</p>
                 </header>
                 
                 <div class="create-layout">
                     <!-- Form Inputs -->
                     <div class="form-section card">
-                        <h3>1. Enter Details</h3>
+                        <h3><span class="step-num">1</span> Enter Details</h3>
                         <form id="cert-form">
                             <div class="input-group">
-                                <label for="name">Holder's Name (Required)</label>
-                                <input type="text" id="name" required>
+                                <label for="name">Holder's Name <span style="color:var(--error-color)">*</span></label>
+                                <input type="text" id="name" required placeholder="e.g. John Doe">
                             </div>
                             <div class="input-group">
-                                <label for="org">Issuing Organization (Optional)</label>
+                                <label for="org">Issuing Organization</label>
                                 <input type="text" id="org" placeholder="Default: Aiking Solution">
                             </div>
                             <div class="input-group">
-                                <label for="desc">Event / Description (Optional)</label>
-                                <input type="text" id="desc" placeholder="Default: Outstanding Performance">
+                                <label for="desc">Event / Description</label>
+                                <input type="text" id="desc" placeholder="Default: For Outstanding Performance">
                             </div>
                             <div class="input-group">
-                                <label for="sig">Signature Name (Optional)</label>
+                                <label for="sig">Signature Name</label>
                                 <input type="text" id="sig" placeholder="Default: Project Director">
                             </div>
                         </form>
                         
-                        <h3 class="template-title">2. Select Template</h3>
+                        <h3 class="mt-2"><span class="step-num">2</span> Select Template</h3>
                         <div id="template-selector" class="template-selector">
-                            <!-- JS will populate this -->
+                            <!-- Skeleton Loading -->
+                            <div class="template-option skeleton-box" style="padding:0; border:none;">
+                                <div class="skeleton-thumb"></div>
+                                <div class="skeleton-text"></div>
+                            </div>
+                            <div class="template-option skeleton-box" style="padding:0; border:none;">
+                                <div class="skeleton-thumb"></div>
+                                <div class="skeleton-text"></div>
+                            </div>
                         </div>
 
-                        <button id="downloadBtn" class="btn-primary">Download as PDF</button>
+                        <button id="downloadBtn" class="btn-primary">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                            Download PDF
+                        </button>
                     </div>
 
                     <!-- Live Preview -->
                     <div class="preview-section card">
-                        <h3>Live Preview</h3>
+                        <h3 style="margin-bottom:1.5rem; display:flex; align-items:center; gap:8px;">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                            Live Preview
+                        </h3>
                         <div id="certificate-preview-wrapper">
                             <!-- JS will inject the certificate here -->
                         </div>
@@ -77,9 +104,6 @@
 
     <!-- Hidden definitions for all certificate templates -->
     <div id="template-definitions" style="display: none;">
-        <!-- (All 3 certificate templates go here, just like in the previous file) -->
-        
-
         <!-- Template 1: Modern Minimal -->
         <div id="tpl-modern" class="certificate modern">
             <div class="modern-header">
@@ -102,30 +126,32 @@
                 </div>
             </div>
         </div>
-<!-- Template 2: Classic Elegant -->
-<div id="tpl-classic" class="certificate classic">
-  <div class="cert-border-gold">
-    <div class="cert-border-inner">
-      <span class="cert-issued">Aiking Solution</span>
-      <h1 class="cert-title">Certificate of Completion</h1>
-      <p class="cert-subtitle">This certificate is proudly presented to</p>
-      <p class="cert-name" data-field="name">[Full Name]</p>
-      <p class="cert-desc" data-field="desc">[For Outstanding Performance]</p>
-      <div class="cert-footer">
-        <div class="signature">
-          <span class="cert-date" data-field="date">[Date]</span>
-          <span class="cert-line"></span>
-          <span class="cert-sig-title">Date</span>
+
+        <!-- Template 2: Classic Elegant -->
+        <div id="tpl-classic" class="certificate classic">
+          <div class="cert-border-gold">
+            <div class="cert-border-inner">
+              <span class="cert-issued">Aiking Solution</span>
+              <h1 class="cert-title">Certificate of Completion</h1>
+              <p class="cert-subtitle">This certificate is proudly presented to</p>
+              <p class="cert-name" data-field="name">[Full Name]</p>
+              <p class="cert-desc" data-field="desc">[For Outstanding Performance]</p>
+              <div class="cert-footer">
+                <div class="signature">
+                  <span class="cert-date" data-field="date">[Date]</span>
+                  <span class="cert-line"></span>
+                  <span class="cert-sig-title">Date</span>
+                </div>
+                <div class="signature">
+                  <span class="cert-sig-name" data-field="sig">[Signature]</span>
+                  <span class="cert-line"></span>
+                  <span class="cert-sig-title" data-field="sig-title">Project Director</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="signature">
-          <span class="cert-sig-name" data-field="sig">[Signature]</span>
-          <span class="cert-line"></span>
-          <span class="cert-sig-title" data-field="sig-title">Project Director</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+
         <!-- Template 3: Dark Premium -->
         <div id="tpl-dark" class="certificate dark">
             <div class="cert-border-gold-dark">
@@ -153,8 +179,8 @@
     <!-- Toast Notification -->
     <div id="toast" class="toast"></div>
 
-    <!-- Scripts for this page -->
     <script src="nav.js"></script>
-    <script src="create_v2.js"></script><!-- Renamed from script.js -->
+    <script src="create_v2.js"></script>
+    <script src="condensation.js"></script>
 </body>
 </html>

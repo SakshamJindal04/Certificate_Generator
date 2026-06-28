@@ -2,8 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // --- Template Loading ---
   const templateSelector = document.getElementById("template-selector");
   let availableTemplates = [];
-  let selectedTemplateId = "tpl-Modern";
-  let createdCount = 0;
+  let selectedTemplateId = "tpl-modern";
 
   async function loadTemplates() {
     try {
@@ -14,10 +13,10 @@ document.addEventListener("DOMContentLoaded", () => {
       templateSelector.innerHTML = "";
       availableTemplates.forEach((tpl) => {
         const option = document.createElement("div");
-        option.className = "template-option";
+        option.className = "template-option fade-in-up";
         option.dataset.id = tpl.id;
         option.innerHTML = `
-          <div class="template-thumb"></div>
+          <div class="template-thumb" style="background-image: url('${tpl.thumbnail}'), linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%)"></div>
           <p>${tpl.name}</p>
         `;
         templateSelector.appendChild(option);
@@ -35,10 +34,12 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
       // Default template highlight
-      const defaultTemplate = templateSelector.querySelector(
-        `[data-id="${selectedTemplateId}"]`
-      );
-      if (defaultTemplate) defaultTemplate.classList.add("selected");
+      // Check if modern exists, otherwise just pick the first
+      const defaultTemplate = templateSelector.querySelector(`[data-id="${selectedTemplateId}"]`) || templateSelector.firstElementChild;
+      if (defaultTemplate) {
+          defaultTemplate.classList.add("selected");
+          selectedTemplateId = defaultTemplate.dataset.id;
+      }
 
       updatePreview();
     } catch (err) {
@@ -82,11 +83,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Apply text content safely
     clone.querySelector('[data-field="name"]').textContent = name;
-    clone.querySelector('[data-field="org"]').textContent = org;
-    clone.querySelector('[data-field="desc"]').textContent = desc;
-    clone.querySelector('[data-field="sig"]').textContent = sigPrintName;
-    clone.querySelector('[data-field="sig-title"]').textContent = sigTitle;
-    clone.querySelector('[data-field="date"]').textContent = date;
+    if (clone.querySelector('[data-field="org"]')) clone.querySelector('[data-field="org"]').textContent = org;
+    if (clone.querySelector('[data-field="desc"]')) clone.querySelector('[data-field="desc"]').textContent = desc;
+    if (clone.querySelector('[data-field="sig"]')) clone.querySelector('[data-field="sig"]').textContent = sigPrintName;
+    if (clone.querySelector('[data-field="sig-title"]')) clone.querySelector('[data-field="sig-title"]').textContent = sigTitle;
+    if (clone.querySelector('[data-field="date"]')) clone.querySelector('[data-field="date"]').textContent = date;
 
     // Render in preview
     previewWrapper.innerHTML = "";
@@ -108,33 +109,39 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (!nameInput.value.trim()) {
       showToast("Please enter the certificate holder's name.", "error");
+      nameInput.focus();
       return;
     }
 
     downloadBtn.disabled = true;
-    downloadBtn.textContent = "Generating...";
+    downloadBtn.innerHTML = `
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="spin">
+            <path d="M21 12a9 9 0 1 1-6.219-8.56"></path>
+        </svg> Generating...
+    `;
 
     try {
-    await document.fonts.ready; // ✅ ensure fonts fully loaded
+      await document.fonts.ready; 
 
-    const canvas = await html2canvas(certNode, {
-        scale: 3,
-        useCORS: true,
-        backgroundColor: null,
-    });
+      const canvas = await html2canvas(certNode, {
+          scale: 3, // High resolution
+          useCORS: true,
+          backgroundColor: null,
+      });
 
-    const imgData = canvas.toDataURL('image/png');
-    const pdf = new jsPDF({
-        orientation: 'landscape',
-        unit: 'px',
-        format: [certNode.offsetWidth, certNode.offsetHeight],
-    });
+      const imgData = canvas.toDataURL('image/png');
+      const pdf = new jsPDF({
+          orientation: 'landscape',
+          unit: 'px',
+          format: [certNode.offsetWidth, certNode.offsetHeight],
+      });
 
-    pdf.addImage(imgData, 'PNG', 0, 0, certNode.offsetWidth, certNode.offsetHeight);
-    pdf.save(`Certificate_${nameInput.value.replace(/\s+/g, '_')}.pdf`);
-      createdCount++;
-      const dashboardCount = document.getElementById("created-count");
-      if (dashboardCount) dashboardCount.innerText = createdCount;
+      pdf.addImage(imgData, 'PNG', 0, 0, certNode.offsetWidth, certNode.offsetHeight);
+      pdf.save(`Certificate_${nameInput.value.replace(/\s+/g, '_')}.pdf`);
+      
+      // Update LocalStorage count
+      let currentCount = parseInt(localStorage.getItem('cert_count') || "0", 10);
+      localStorage.setItem('cert_count', currentCount + 1);
 
       showToast("Certificate downloaded successfully! 🎉");
 
@@ -152,20 +159,30 @@ document.addEventListener("DOMContentLoaded", () => {
       showToast("Error generating PDF. Try again.", "error");
     } finally {
       downloadBtn.disabled = false;
-      downloadBtn.textContent = "Download as PDF";
+      downloadBtn.innerHTML = `
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          Download PDF
+      `;
     }
   });
 
   // --- Toast Notification ---
   const toast = document.getElementById("toast");
   function showToast(message, type = "success") {
-    toast.textContent = message;
-    toast.style.background = type === "error" ? "#d9534f" : "#28a745";
+    toast.innerHTML = type === "error" 
+        ? `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg> ${message}`
+        : `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> ${message}`;
+    
+    toast.style.background = type === "error" ? "var(--error-color)" : "var(--accent-color)";
     toast.classList.add("show");
-    setTimeout(() => toast.classList.remove("show"), 3000);
+    setTimeout(() => toast.classList.remove("show"), 4000);
   }
 
   // --- Initial Load ---
-  console.log("✅ create_v2.js loaded successfully");
+  // Add quick CSS animation class for the spinner
+  const style = document.createElement('style');
+  style.innerHTML = `@keyframes spin { 100% { transform: rotate(360deg); } } .spin { animation: spin 1s linear infinite; }`;
+  document.head.appendChild(style);
+
   loadTemplates();
 });

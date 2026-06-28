@@ -3,52 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aiking Certificate Dashboard</title>
+    <title>Dashboard | Certify.</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="dashboard-layout">
         <!-- Sidebar Navigation -->
         <nav class="sidebar">
             <div class="sidebar-header">
-                <span class="logo-text">Certify</span>
+                <span class="logo-text">Certify<span class="logo-dot">.</span></span>
             </div>
             <ul class="nav-links">
-                <!-- Links updated to point to .html files -->
-                <li><a href="index.html" class="nav-link">Dashboard</a></li>
-                <li><a href="create.html" class="nav-link">Create Certificate</a></li>
-                <li><a href="about.html" class="nav-link">About Project</a></li>
+                <li><a href="index.html" class="nav-link">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                    Dashboard</a></li>
+                <li><a href="create.html" class="nav-link">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="12" y1="18" x2="12" y2="12"></line><line x1="9" y1="15" x2="15" y2="15"></line></svg>
+                    Create Certificate</a></li>
+                <li><a href="about.html" class="nav-link">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                    About Project</a></li>
             </ul>
+            <div class="sidebar-footer">
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Dark Mode">
+                    <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                    <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                    <span>Theme</span>
+                </button>
+            </div>
         </nav>
 
         <!-- Main Content Area -->
-        <main class="main-content">
-            <!-- PAGE 1: Dashboard -->
-            <section id="dashboard-page" class="page">
+        <main class="main-content" data-bg-img="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1920&q=80">
+            <div class="blob-bg"></div>
+            <section id="dashboard-page" class="page fade-in-up">
                 <header class="page-header">
-                    <h1>Welcome to your Dashboard</h1>
-                    <p>Manage and create your professional certificates.</p>
+                    <h1>Overview</h1>
+                    <p class="subtitle">Manage and generate professional certificates seamlessly.</p>
                 </header>
-                <div class="card-container">
+                
+                <div class="card-container mb-2">
                     <div class="info-card">
-                        <h3>Templates Available</h3>
-                        <p class="card-data" id="template-count">3</p>
+                        <div class="card-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
+                        </div>
+                        <div class="card-content">
+                            <h3>Templates Available</h3>
+                            <p class="card-data" id="template-count">3</p>
+                        </div>
                     </div>
                     <div class="info-card">
-                        <h3>Certificates Created</h3>
-                        <p class="card-data" id="created-count">0</p>
+                        <div class="card-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+                        </div>
+                        <div class="card-content">
+                            <h3>Certificates Created</h3>
+                            <p class="card-data" id="created-count">0</p>
+                        </div>
                     </div>
-                    <div class="info-card">
-                        <h3>Get Started</h3>
-                        <p>Click "Create Certificate" to begin.</p>
+                </div>
+
+                <div class="quotes-section card fade-in-up" style="animation-delay: 0.1s;">
+                    <h3>Daily Inspiration</h3>
+                    <div class="quote-container" id="quote-container">
+                        <p class="quote-text" id="quote-text">"Success is not final, failure is not fatal: it is the courage to continue that counts."</p>
+                        <p class="quote-author" id="quote-author">— Winston Churchill</p>
                     </div>
                 </div>
             </section>
         </main>
     </div>
-    <!-- Script for this page -->
+    
     <script src="nav.js"></script>
-    <!-- Note: We can add a simple script here if needed, but for now, nav.js is all we need -->
+    <script src="condensation.js"></script>
 </body>
 </html>

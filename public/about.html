@@ -3,45 +3,142 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About | Aiking Certificate Dashboard</title>
+    <title>About | Certify.</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="dashboard-layout">
         <!-- Sidebar Navigation -->
         <nav class="sidebar">
             <div class="sidebar-header">
-                <span class="logo-text">Certify</span>
+                <span class="logo-text">Certify<span class="logo-dot">.</span></span>
             </div>
             <ul class="nav-links">
-                <li><a href="index.html" class="nav-link">Dashboard</a></li>
-                <li><a href="create.html" class="nav-link">Create Certificate</a></li>
-                <li><a href="about.html" class="nav-link">About Project</a></li>
+                <li><a href="index.html" class="nav-link">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                    Dashboard</a></li>
+                <li><a href="create.html" class="nav-link">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="12" y1="18" x2="12" y2="12"></line><line x1="9" y1="15" x2="15" y2="15"></line></svg>
+                    Create Certificate</a></li>
+                <li><a href="about.html" class="nav-link">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                    About Project</a></li>
             </ul>
+            <div class="sidebar-footer">
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Dark Mode">
+                    <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                    <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                    <span>Theme</span>
+                </button>
+            </div>
         </nav>
 
         <!-- Main Content Area -->
-        <main class="main-content">
-            <!-- PAGE 3: About -->
-            <section id="about-page" class="page">
+        <main class="main-content" data-bg-img="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1920&q=80">
+            <div class="blob-bg"></div>
+            <section id="about-page" class="page fade-in-up">
                 <header class="page-header">
-                    <h1>About This Project</h1>
+                    <h1>About</h1>
+                    <p class="subtitle">Information regarding the project and its developer.</p>
                 </header>
-                <div class="card">
-                    <h2>Certificate Generator Dashboard</h2>
-                    <p>This is a full-stack web application built to demonstrate modern web technologies.</p>
-                    <ul>
-                        <li><strong>Frontend:</strong> Pure HTML, CSS, and JavaScript</li>
-                        <li><strong>Backend:</strong> Next.js API Routes</li>
-                        <li><strong>PDF Generation:</strong> jsPDF + html2canvas</li>
-                    </ul>
-                    <p class="credits">Developed by <strong>Saksham Jindal</strong>.</p>
+                
+                <div class="about-grid">
+                    
+                    <!-- Part A: Project Info -->
+                    <div class="card about-card">
+                        <h2>The Project</h2>
+                        <p><strong>Certify.</strong> is a dynamic, client-side Certificate Generation System built to streamline the process of recognizing achievements. Designed for educators, HR professionals, and event organizers, it removes the friction of manual graphic design.</p>
+                        
+                        <p>Unlike traditional PDF generators that rely heavily on server-side rendering, Certify uses a robust client-side engine to generate pixel-perfect A4 documents instantly, saving server costs and ensuring user privacy.</p>
+                        
+                        <ul class="feature-list">
+                            <li>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                                <div><strong>Real-time Preview Engine:</strong> Form inputs instantly map to a scaled HTML DOM template, allowing visual verification before downloading.</div>
+                            </li>
+                            <li>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                                <div><strong>Client-Side PDF Compilation:</strong> Utilizing <code>html2canvas</code> and <code>jsPDF</code>, DOM nodes are rendered into high-resolution PNGs and encapsulated in landscape PDFs entirely within the browser.</div>
+                            </li>
+                            <li>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                                <div><strong>Hybrid Architecture:</strong> Built on <strong>Next.js 14</strong> routing API requests, while serving a Vanilla HTML/CSS/JS frontend for maximum performance and minimum bundle size.</div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Part B: Developer Info -->
+                    <div class="card about-card fade-in-up" style="animation-delay: 0.1s;">
+                        <div class="dev-header">
+                            <div class="dev-avatar">SJ</div>
+                            <div class="dev-info">
+                                <h2>Saksham Jindal</h2>
+                                <p class="dev-tagline">CS undergraduate building production-grade full-stack systems</p>
+                            </div>
+                        </div>
+                        
+                        <p>B.Tech in Computer Science & Engineering at <strong>SRM Institute of Science and Technology (SRMIST)</strong>, Kattankulathur (Aug 2024 – May 2028), CGPA 8.73/10. Builds full-stack web applications (MERN / Next.js) with hands-on experience through internships and hackathons.</p>
+                        
+                        <p>Currently working as a <strong>Web Development Intern at SkillCraft Technology</strong> (June 2026 – Present), contributing to frontend features and backend API integrations in an agile environment.</p>
+                        <p>Also managing a student-recruiter database for 500+ students as a Member of the Placement & Career Development Team (PLACFV), SRMIST.</p>
+                        
+                        <div style="margin-top:2rem;">
+                            <h3 style="font-size:1.1rem; margin-bottom:0.5rem; color:var(--text-primary);">Tech Stack & Skills</h3>
+                            <div class="skills-container">
+                                <span class="skill-badge">JavaScript (ES6+)</span>
+                                <span class="skill-badge">React.js</span>
+                                <span class="skill-badge">Next.js</span>
+                                <span class="skill-badge">Node.js</span>
+                                <span class="skill-badge">Express.js</span>
+                                <span class="skill-badge">Python</span>
+                                <span class="skill-badge">Java</span>
+                                <span class="skill-badge">MongoDB</span>
+                                <span class="skill-badge">GCP</span>
+                                <span class="skill-badge">Tailwind CSS</span>
+                            </div>
+                        </div>
+                        
+                        <div style="margin-top:2rem;">
+                            <h3 style="font-size:1.1rem; margin-bottom:0.5rem; color:var(--text-primary);">Notable Projects</h3>
+                            <ul class="feature-list" style="margin-top:0.5rem;">
+                                <li><strong>Exam Alchemy:</strong> Automated question paper generator (React, Node.js, MongoDB, Google Gemini API)</li>
+                                <li><strong>Safekart:</strong> Product authenticity verification platform (Next.js, Node.js, MongoDB)</li>
+                                <li><strong>Event Attendance System:</strong> Timestamp-based attendance tracking (React, Node.js, MongoDB)</li>
+                            </ul>
+                        </div>
+                        
+                        <div style="margin-top:2rem;">
+                            <h3 style="font-size:1.1rem; margin-bottom:0.5rem; color:var(--text-primary);">Achievements & Certifications</h3>
+                            <ul class="feature-list" style="margin-top:0.5rem;">
+                                <li>3rd Place — QWIK Innovate Ideathon 2026 (50+ teams, SRMIST)</li>
+                                <li>Finalist — Smart India Hackathon 2025</li>
+                                <li>NPTEL Certifications: Java (2025), OOP (2025), DBMS (2026)</li>
+                            </ul>
+                        </div>
+
+                        <div class="contact-links">
+                            <a href="mailto:sakshamjindal1620@gmail.com">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                                Email
+                            </a>
+                            <a href="#" target="_blank">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                                LinkedIn
+                            </a>
+                            <a href="#" target="_blank">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                                GitHub
+                            </a>
+                        </div>
+                    </div>
+
                 </div>
             </section>
         </main>
     </div>
-    <!-- Script for this page -->
+
     <script src="nav.js"></script>
+    <script src="condensation.js"></script>
 </body>
 </html>
